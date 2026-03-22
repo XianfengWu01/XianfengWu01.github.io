@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xianfeng Wu | Homepage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --bg: #fbfaf7;
+      --panel: rgba(255,255,255,0.72);
+      --card: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6d6d73;
+      --line: #e7e2d9;
+      --accent: #8a5a44;
+      --accent-soft: #f5ede7;
+      --shadow: 0 10px 30px rgba(25, 20, 15, 0.05);
+      --maxw: 980px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(138, 90, 68, 0.08), transparent 28%),
+        radial-gradient(circle at top right, rgba(138, 90, 68, 0.05), transparent 24%),
+        var(--bg);
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity .2s ease, color .2s ease, transform .2s ease;
+    }
+    a:hover { opacity: .82; }
+
+    .wrap {
+      width: min(var(--maxw), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(251, 250, 247, 0.82);
+      border-bottom: 1px solid rgba(231, 226, 217, 0.8);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 68px;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 0.95rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a { color: var(--muted); }
+    .nav-links a:hover { color: var(--text); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 42px;
+      padding: 52px 0 30px;
+      align-items: center;
+    }
+
+    .portrait {
+      width: 220px;
+      height: 220px;
+      border-radius: 28px;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.9);
+      background: #fff;
+    }
+
+    .eyebrow {
+      font-size: .9rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(3rem, 5vw, 4.8rem);
+      line-height: .95;
+      margin: 0;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      margin-top: 12px;
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
+
+    .intro {
+      margin-top: 24px;
+      max-width: 720px;
+      font-size: 1.02rem;
+      color: #2f2f33;
+    }
+
+    .intro strong {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text);
+      background: rgba(255,255,255,0.72);
+      font-size: 0.94rem;
+    }
+
+    .pill.primary {
+      background: var(--text);
+      color: #fff;
+      border-color: var(--text);
+    }
+
+    main { padding: 14px 0 68px; }
+
+    section {
+      padding: 26px 0 8px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .section-kicker {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .8rem;
+      padding-top: 8px;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      margin-top: 10px;
+      max-width: 720px;
+    }
+
+    .news-list, .timeline {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .news-item, .timeline li {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 20px;
+      padding: 12px 0;
+      border-bottom: 1px dashed rgba(231, 226, 217, 0.8);
+    }
+
+    .news-item:last-child, .timeline li:last-child { border-bottom: 0; }
+
+    .meta {
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .pub-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 4px;
+    }
+
+    .pub {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 22px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .thumb {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #f6f0ea, #ebe3da);
+      border: 1px solid #efe8df;
+    }
+
+    .pub-title {
+      font-size: 1.18rem;
+      line-height: 1.4;
+      margin: 0 0 8px;
+      font-weight: 600;
+    }
+
+    .authors {
+      color: #3e3e43;
+      font-size: .96rem;
+      margin-bottom: 8px;
+    }
+
+    .authors strong { color: var(--accent); }
+
+    .venue {
+      color: var(--muted);
+      margin-bottom: 12px;
+      font-size: .95rem;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: .77rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 5px 8px;
+      border-radius: 999px;
+      margin-right: 8px;
+    }
+
+    .pub-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+    }
+
+    .note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0 60px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .section-head,
+      .news-item,
+      .timeline li,
+      .pub {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        gap: 24px;
+        padding-top: 34px;
+      }
+
+      .portrait {
+        width: 170px;
+        height: 170px;
+      }
+
+      .section-kicker { padding-top: 0; }
+    }
+
+    @media (max-width: 560px) {
+      .nav {
+        padding: 10px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 14px;
+        font-size: .9rem;
+      }
+
+      .contact-row {
+        gap: 10px;
+      }
+
+      .pill {
+        font-size: .9rem;
+        width: fit-content;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap nav">
+      <div class="brand">Xianfeng Wu</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header class="hero" id="about">
+      <img src="src/xianfeng.jpg" alt="Portrait of Xianfeng Wu" class="portrait">
+      <div>
+        <div class="eyebrow">Homepage</div>
+        <h1>Xianfeng Wu</h1>
+        <div class="subtitle">Incoming Ph.D. Student, UNC Chapel Hill</div>
+        <div class="intro">
+          I am an incoming Ph.D. student in the <a href="https://www.cs.unc.edu/" target="_blank" rel="noopener">Department of Computer Science at UNC Chapel Hill</a>, where I will be fortunate to work with Prof. <a href="https://tianlong-chen.github.io/" target="_blank" rel="noopener">Tianlong Chen</a>. 
+          Before joining UNC, I was briefly enrolled as a Ph.D. student at <a href="https://hkust.edu.hk/" target="_blank" rel="noopener">HKUST</a>, advised by <a href="https://facultyprofiles.hkust.edu.hk/profiles.php?profile=harry-yang-yangharry" target="_blank" rel="noopener">Harry Yang</a>.
+          <br><br>
+          My research interests broadly lie in <strong>Multimodal Generative Models</strong>, <strong>3D Vision</strong>, and <strong>AI for Science</strong>.
+        </div>
+        <div class="contact-row">
+          <a class="pill primary" href="mailto:xianfeng@cs.unc.edu"><i class="fas fa-envelope"></i> Email</a>
+          <a class="pill" href="https://github.com/XianfengWu01" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+          <a class="pill" href="https://scholar.google.com/citations?user=C9B5JKYAAAAJ&amp;hl=en" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+          <a class="pill" href="https://x.com/XianfengWu10" target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i> X</a>
+          <a class="pill" href="src/xianfeng_cv.pdf" target="_blank" rel="noopener"><i class="fas fa-file-lines"></i> CV</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="news">
+        <div class="section-head">
+          <div class="section-kicker">Updates</div>
+          <div>
+            <h2>News</h2>
+            <div class="section-desc">A few recent updates and selected milestones.</div>
+          </div>
+        </div>
+        <ul class="news-list">
+          <li class="news-item">
+            <div class="meta">Mar. 2026</div>
+            <div>Our paper <a href="https://arxiv.org/pdf/2603.15555" target="_blank" rel="noopener">Learning Latent Proxies for Controllable Single-Image Relighting</a> was accepted to <strong>CVPR 2026</strong>.</div>
+          </li>
+          <li class="news-item">
+            <div class="meta">Dec. 2025</div>
+            <div>Released <a href="https://github.com/hustvl/4DLangVGGT/" target="_blank" rel="noopener">4DLangVGGT</a>, a feed-forward 4D language-grounded visual geometry model.</div>
+          </li>
+          <li class="news-item">
+            <div class="meta">Mar. 2025</div>
+            <div>Released <a href="https://github.com/XianfengWu01/LightGen" target="_blank" rel="noopener">LightGen</a>, an efficient text-to-image generation training pipeline based on MAR.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="publications">
+        <div class="section-head">
+          <div class="section-kicker">Research</div>
+          <div>
+            <h2>Selected Publications</h2>
+            <div class="section-desc">Representative work across multimodal generative models and 3D vision. <br> * indicates equal contribution.</div>
+          </div>
+        </div>
+
+        <div class="pub-list">
+          <article class="pub">
+            <img class="thumb" src="src/teaser_relight.jpg" alt="Relighting teaser" onerror="this.style.display='none'">
+            <div>
+              <h3 class="pub-title">Learning Latent Proxies for Controllable Single-Image Relighting</h3>
+              <div class="authors">Haoze Zheng*, Zihao Wang*, <strong>Xianfeng Wu*</strong>, Yajing Bai, Yexin Liu, Yun Li, Xiaogang Xu, Harry Yang</div>
+              <div class="venue"><span class="tag">CVPR 2026</span> </div>
+              <div class="pub-links">
+                <a href="https://arxiv.org/pdf/2603.15555" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Paper</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="pub">
+            <img class="thumb" src="src/teaser_langvggt.jpg" alt="4DLangVGGT teaser" onerror="this.style.display='none'">
+            <div>
+              <h3 class="pub-title">4DLangVGGT: 4D Language Visual Geometry Grounded Transformer</h3>
+              <div class="authors"><strong>Xianfeng Wu*</strong>, Yajing Bai*, Minghan Li, Xianzu Wu, Xueqi Zhao, Zhongyuan Lai, Wenyu Liu, Xinggang Wang</div>
+              <div class="venue"><span class="tag">arXiv</span> </div>
+              <div class="pub-links">
+                <a href="https://arxiv.org/pdf/2512.05060" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Paper</a>
+                <a href="https://github.com/hustvl/4DLangVGGT/" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                <a href="https://hustvl.github.io/4DLangVGGT/" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Project</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="pub">
+            <img class="thumb" src="src/teaser_lightgen.png" alt="LightGen teaser" onerror="this.style.display='none'">
+            <div>
+              <h3 class="pub-title">LightGen: An Efficient Text2Img Generation Pretrain Pipeline based on MAR</h3>
+              <div class="authors"><strong>Xianfeng Wu*</strong>, Yajing Bai*, Haoze Zheng*, Harold Haodong Chen*, Yexin Liu*, et al.</div>
+              <div class="venue"><span class="tag">arXiv</span> </div>
+              <div class="pub-links">
+                <a href="https://arxiv.org/pdf/2503.08619" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Paper</a>
+                <a href="https://github.com/XianfengWu01/LightGen" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="pub">
+            <img class="thumb" src="src/teaser_profilingdit.jpg" alt="ProfilingDiT teaser" onerror="this.style.display='none'">
+            <div>
+              <h3 class="pub-title">Model Reveals What to Cache: Profiling-Based Feature Reuse for Video Diffusion Models</h3>
+              <div class="authors">Xuran Ma, Yexin Liu, Yaofu Liu, <strong>Xianfeng Wu</strong>, et al.</div>
+              <div class="venue"><span class="tag">ICCV 2025</span> </div>
+              <div class="pub-links">
+                <a href="https://github.com/GeekGuru123/ProfilingDiT" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="pub">
+            <img class="thumb" src="src/teaser_unveiling.jpg" alt="MMVU teaser" onerror="this.style.display='none'">
+            <div>
+              <h3 class="pub-title">Unveiling the Ignorance of MLLMs: Seeing Clearly, Answering Incorrectly</h3>
+              <div class="authors">Yexin Liu*, Zhengyang Lian*, Yueze Wang*, <strong>Xianfeng Wu*</strong>, et al.</div>
+              <div class="venue"><span class="tag">CVPR 2025</span> </div>
+              <div class="pub-links">
+                <a href="https://github.com/BAAI-DCAI/MMVU" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="pub">
+            <img class="thumb" src="src/teaser_fsc.jpg" alt="FSC teaser" onerror="this.style.display='none'">
+            <div>
+              <h3 class="pub-title">FSC: Few-point Shape Completion</h3>
+              <div class="authors">Xianzu Wu*, <strong>Xianfeng Wu*</strong>, Tianyu Luan, Yajing Bai, Zhongyuan Lai, Junsong Yuan</div>
+              <div class="venue"><span class="tag">CVPR 2024</span> </div>
+              <div class="pub-links">
+                <a href="https://github.com/xianzuwu/FSC" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="note">For a full publication list, please see my <a href="https://scholar.google.com/citations?user=C9B5JKYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar profile</a>.</div>
+      </section>
+
+      <section id="experience">
+        <div class="section-head">
+          <div class="section-kicker">Background</div>
+          <div>
+            <h2>Experience</h2>
+            <div class="section-desc">Selected research experiences that shaped my current interests.</div>
+          </div>
+        </div>
+        <ul class="timeline">
+          <li>
+            <div class="meta">Aug 2025 – Present</div>
+            <div>
+              <strong>Remote Research Intern</strong><br>
+              Department of Computer Science, UNC Chapel Hill<br>
+              <span style="color: var(--muted);">Advisor: Assistant Prof. <a href="https://tianlong-chen.github.io/" target="_blank" rel="noopener">Tianlong Chen</a></span>
+            </div>
+          </li>
+          <li>
+            <div class="meta">Jun 2025 – Sep 2025</div>
+            <div>
+              <strong>Research Intern</strong><br>
+              School of EIC, Huazhong University of Science and Technology<br>
+              <span style="color: var(--muted);">Advisors: Prof. <a href="https://xwcv.github.io/" target="_blank" rel="noopener">Xinggang Wang</a> and Prof. <a href="https://scholar.google.com/citations?user=D7jDk7gAAAAJ&amp;hl=en" target="_blank" rel="noopener">Wenyu Liu</a></span>
+            </div>
+          </li>
+          <li>
+            <div class="meta">Jan 2023 – Jun 2024</div>
+            <div>
+              <strong>Remote Research Intern</strong><br>
+              Department of Computer Science and Engineering, University at Buffalo<br>
+              <span style="color: var(--muted);">Advisors: Prof. <a href="https://cse.buffalo.edu/~jsyuan/" target="_blank" rel="noopener">Junsong Yuan</a> and Dr. <a href="https://tyluann.github.io/" target="_blank" rel="noopener">Tianyu Luan</a></span>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 Xianfeng Wu
+    </footer>
+  </div>
+</body>
+</html>
